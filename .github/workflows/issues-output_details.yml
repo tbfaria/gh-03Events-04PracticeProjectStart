@@ -1,8 +1,15 @@
 name: Output information on issues
-on: issues
+
+on:
+  issues:
+    types: [opened, edited, closed]
+
 jobs:
   info:
-    runs-on: ubunto-latest
+    runs-on: ubuntu-latest
+
     steps:
-      - name: Output Github context
-        run: echo "echo ${{ toJson(github)}}"
+      - name: Output GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
