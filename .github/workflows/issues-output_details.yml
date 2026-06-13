@@ -1,0 +1,8 @@
+name: Output information on issues
+on: issues
+jobs:
+  info:
+    runs-on: ubunto-latest
+    steps:
+      - name: Output Github context
+        run: echo "echo ${{ toJson(github)}}"
